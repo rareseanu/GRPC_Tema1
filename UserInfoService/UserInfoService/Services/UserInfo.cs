@@ -13,17 +13,23 @@ namespace UserInfoService.Services
         {
             if(CNP[0] == '2' || CNP[0] == '6')
             {
-                return "Masculin";
+                return "Feminin";
             } else
             {
-                return "Feminin";
+                return "Masculin";
             }
         }
 
         public string GetVarsta(string CNP)
         {
             int anNastere = Int32.Parse(CNP.Substring(1, 2));
-            return (DateTime.Now.Year - anNastere).ToString();
+            if(anNastere > DateTime.Now.Year)
+            {
+                return (DateTime.Now.Year - anNastere - 1900).ToString();
+            } else
+            {
+                return (DateTime.Now.Year - anNastere - 2000).ToString();
+            }
         }
         
         public bool IsValid(string CNP)
