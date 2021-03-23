@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "UserInfoService";
+
+package userinfo;
+
+service UserInfo {
+	rpc GetUserInfo (UserInfoRequest) returns (UserInfoReply);
+}
+
+message UserInfoRequest {
+	string nume = 1;
+	string CNP = 2;
+}
+
+message UserInfoReply {
+	string nume = 1;
+	string gen = 2;
+	string varsta = 3;
+}
