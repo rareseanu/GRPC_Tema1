@@ -31,10 +31,21 @@ namespace UserInfoService.Services
                 return (DateTime.Now.Year - anNastere - 2000).ToString();
             }
         }
+
+        public bool IsDigitsOnly(string CNP)
+        {
+            foreach (char c in CNP)
+            {
+                if (c < '0' || c > '9')
+                    return false;
+            }
+
+            return true;
+        }
         
         public bool IsValid(string CNP)
         {
-            if(CNP.Length == 13)
+            if(CNP.Length == 13 && IsDigitsOnly(CNP))
             {
                 return true;
             }
